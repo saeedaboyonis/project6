@@ -7,7 +7,7 @@ To achieve that goal we use Spring Cloud Gateway, Spring Cloud Circuit Breaker, 
 and the Eureka Service Discovery from the [Spring Cloud Netflix](https://github.com/spring-cloud/spring-cloud-netflix) technology stack.
 ## Starting services locally with kubernetes
 * Build a Docker image for Spring Pet Clinic:
- `mvn compile -Dimage=spetclinic com.google.cloud.tools:jib-maven-plugin:1.0.0:dockerBuild`
+ `./mvnw compile -Dimage=spetclinic com.google.cloud.tools:jib-maven-plugin:1.0.0:dockerBuild`
 * Run Pet Clinic in Kubernetes:
 `kubectl apply -f petclinic-deployment`
 * Run the folowing command and navigate to localhost:8080 in your browser:
