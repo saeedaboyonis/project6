@@ -5,7 +5,13 @@
 This microservices branch was initially derived from [AngularJS version](https://github.com/spring-petclinic/spring-petclinic-angular1) to demonstrate how to split sample Spring application into [microservices](http://www.martinfowler.com/articles/microservices.html).
 To achieve that goal we use Spring Cloud Gateway, Spring Cloud Circuit Breaker, Spring Cloud Config, Spring Cloud Sleuth, Resilience4j, Micrometer 
 and the Eureka Service Discovery from the [Spring Cloud Netflix](https://github.com/spring-cloud/spring-cloud-netflix) technology stack.
-
+## Starting services locally with kubernetes
+* Build a Docker image for Spring Pet Clinic:
+ `mvn compile -Dimage=spetclinic com.google.cloud.tools:jib-maven-plugin:1.0.0:dockerBuild`
+* Run Pet Clinic in Kubernetes:
+`kubectl apply -f petclinic-deployment`
+* Run the folowing command and navigate to localhost:8080 in your browser:
+`    kubectl port-forward deployment/petclinic 8080:8080` 
 ## Starting services locally without Docker
 
 Every microservice is a Spring Boot application and can be started locally using IDE ([Lombok](https://projectlombok.org/) plugin has to be set up) or `../mvnw spring-boot:run` command. Please note that supporting services (Config and Discovery Server) must be started before any other application (Customers, Vets, Visits and API).
